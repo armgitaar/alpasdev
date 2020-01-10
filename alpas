@@ -66,9 +66,10 @@ cecho() {
 if [[ $# -eq 1 ]]; then
   case "$1" in
   init)
-    cecholn "RED" " Oops! I need your app name."
-    printf " Please provide app's full name. The command should be something like:"
-    cecholn "GREEN" " ./alpas init com.example.blog"
+    cecholn "YELLOW" "Initializing app..."
+    gradle wrapper >/dev/null 2>&1
+    install >/dev/null 2>&1
+    cecholn "GREEN" "Done! Thank you for your contribution."
     ;;
   watch)
     ./gradlew shadowJar >/dev/null 2>&1
@@ -97,35 +98,6 @@ if [[ $# -eq 1 ]]; then
     run_app "$@"
     ;;
   esac
-elif [[ $1 == *"init"* ]]; then
-  if [ -f ./.env ]; then
-    cecho "RED" " Oops!"
-    echo "Looks like your app is already crafted."
-  else
-    cecholn "GREEN" " Crafting your app ..."
-
-    cecholn "GREEN" " Making sure you have the correct gradle version"
-    gradle wrapper --gradle-version 5.0 >/dev/null 2>&1
-
-    cecholn "GREEN" " Copying .env file"
-    cp ./.env.example ./.env
-
-    # todo: replace perl with bash
-    perl -p -i -e 's/dev.alpas.alpasdev/'"$2"'/g' `grep -Ril --exclude-dir=node_modules --exclude-dir=.gradle --exclude-dir=.idea  dev.alpas.alpasdev .`
-    app_name="${2##*.}"
-    perl -p -i -e 's/alpasdev/'"${app_name}"'/g' `grep -Ril --exclude-dir=node_modules --exclude-dir=.gradle --exclude-dir=.idea  alpasdev .`
-
-    cecholn "GREEN" " Generating your app key."
-    app_key=$(env LC_CTYPE=C tr -dc "A-Za-z0-9_$%^&*()-+=" </dev/urandom | head -c 32 | base64)
-    perl -p -i -e 's/__APP_KEY__/'"base64:${app_key}"'/g' `grep -l __APP_KEY__ .env`
-
-    cecholn "GREEN" " Building your app. This will take few seconds."
-
-    gradle build --quiet >/dev/null 2>&1
-    install --quiet >/dev/null 2>&1
-
-    cecholn "GREEN" " ✓ You app is crafted. Let's build something awesome!"
-  fi
 else
   run_app "$@"
 fi

@@ -6,7 +6,7 @@ import com.vladsch.flexmark.parser.Parser
 import com.vladsch.flexmark.util.data.MutableDataSet
 import dev.alpas.Environment
 import dev.alpas.ResourceLoader
-import dev.alpas.ozone.orAbort
+import dev.alpas.orAbort
 import redis.clients.jedis.JedisPool
 import java.nio.file.Paths
 
