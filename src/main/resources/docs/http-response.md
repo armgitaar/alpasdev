@@ -15,7 +15,7 @@ sending responses back to a client.
 <a name="reesponse-payload"></a>
 ### [Returning Response Payload](#response-payload)
 
-You can send response back to the client with a "payload" by using one of `reply()` or `replyAsJson()`
+You can send a response back to the client with a "payload" by using one of `reply()` or `replyAsJson()`
 methods. There are some overloaded variants of these methods as well.
 
 <div class="sublist">
@@ -51,7 +51,7 @@ Use this method if you want to set/change the status code of your response *afte
 ### [Rendering Templates](#rendering-templates)
 
 Instead of returning a string or a `JsonSerializable` object, you can render a template instead
-using one of render methods.
+using one of the render methods.
 
 <div class="sublist">
 
@@ -153,14 +153,14 @@ fun index(call: HttpCall) {
 <a name="cookies"></a>
 ### [Cookies](#cookies)
 
-Cookie is a small piece of information that gets sent with a response back to the client. The client would then
+A cookie is a small piece of information that gets sent with a response back to the client. The client would then
 return unexpired cookies [back to the server in the subsequent requests](#/docs/http-request#retrieving-cookies).
 
 > /info/ <span> Alpas encrypts and signs almost all of your outgoing cookies and decrypts them when it receives a 
 > request. If the cookies are changed by the client, they will be invalidated and removed automatically as well.
 
 > /tip/ <span>You can return the names of the cookies that you **don't** want to be encrypted by [extending 
-> `SessionConfig`](/docs/configuration#core-configs) class and then overriding `encryptExcept` value.</span>
+> `SessionConfig`](/docs/configuration#core-configs) class and then overriding the `encryptExcept` value.</span>
 
 <a name="attaching-cookies"></a>
 #### [Attaching Cookies](#attaching-cookies)
@@ -187,7 +187,7 @@ Send a cookie back to the client by calling one of `addCookie()` methods.
 <a name="forgetting-cookies"></a>
 #### [Forgetting Cookies](#forgetting-cookies)
 
-You can forget/ clear a cookie by calling `forgetCookie()` method and passing the name of the cookie
+You can forget / clear a cookie by calling `forgetCookie()` method and passing the name of the cookie
 that you would want to clear. Optionally, you can also pass the cookie's `path` and/or the `domain`.
 
 <a name="redirects"></a>
@@ -206,7 +206,7 @@ Redirects a call to the given **to** url.
 - `fun back(status: Int = 302, headers: Map<String, String> = emptyMap(), default: String = "/")`
 
 Redirects a call to the previous location. The previous location is determined by first looking at the
-referral header in the request. If it is null then it looks the value of a previous url from the
+referral header in the request. If it is null, then it looks the value of a previous url from the
 session. Alpas automatically saves this location in the current user session for every request.
 If both of these values are absent, then it will redirect to the given *default* location.
 
@@ -217,9 +217,9 @@ If both of these values are absent, then it will redirect to the given *default*
 - `fun intended(default: String = "/", status: Int, headers: Map<String, String>)`
 
 Redirects a call to the location that a user initially intended to go to. Let's say a user is trying to
-access a page that requires the user to be authenticated. In this case, if user isn't authenticated,
-we would normally take them first to a login page so that they could be authenticated. After
-they successfully login, we would want to take them to the page they originally intended.
+access a page that requires the user to be authenticated. In this case, if the user isn't authenticated,
+we would normally take them first to a login page so that they can be authenticated. After
+they successfully login, we would want to take them to the page they originally intended to go to.
 In this case you'd want to use `intended()` method.
 
 - `fun toRouteNamed(name: String, params: Map<String, Any>, status: Int, headers: Map<String, String>)`
@@ -249,5 +249,5 @@ Redirects a call to the given external url.
 </div>
 
 > /alert/ <span>Some redirects methods such as `back()`, `intended()` etc. depend on [sessions](/docs/sessionn) 
->and hence they are available only for the routes that have `SessionStart` middleware applied—either
+>and hence they are available only for the routes that have `SessionStart` middleware applied — either
 >applied individually or using `web` [middleware group](/docs/routing#named-middleware-group).</span>
