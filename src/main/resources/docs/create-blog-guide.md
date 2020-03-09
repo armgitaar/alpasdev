@@ -206,14 +206,15 @@ We are super close - just a few more steps!
 
 Let's now create the largest piece of the puzzle, the blog controller. 
 
-<div class="ordered-list">
+<div class="ordered-list pb-4">
 
 1. Create a new controller using `./alpas make:controller BlogController`<span class="clipboard" data-clipboard-text='./alpas make:controller BlogController'></span> 
 2. In the newly created **BlogController.kt** file, copy and paste in the code from [ADD GITHUBLINK]
 
 </div>
 
-You may notice under the submit function we are referring to a `BlogData` validation rule. This is a custom rule that we will
+
+You may have noticed under the submit function we are referring to a `BlogData` validation rule. This is a custom rule that we will
 setup in the next step. 
 
 >/tip/
