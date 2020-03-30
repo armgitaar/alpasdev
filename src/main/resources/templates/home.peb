@@ -2,6 +2,11 @@
 
 {% block title %} The best blog in the universe {% endblock %}
 
+
+{% block pagemeta %}
+<meta name="description" content="The rapid and delightful Kotlin web framework. Alpas makes it easy for you to create your fully functional killer web application in no time.">
+{% endblock %}
+
 {% block content %}
 
   <div class="leading-loose">

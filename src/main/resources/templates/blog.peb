@@ -1,6 +1,10 @@
 {% extends 'layout/app.peb' %}
 
-{% block title %} Delightful Web Development in Kotlin {% endblock %}
+{% block title %} Best Buzz in the Galaxy! {% endblock %}
+
+{% block pagemeta %}
+  <meta name="description" content="All of the best buzz in the Alpas, Kotlin, and Web Development Galaxies. Warning - once you enter; you may never leave.">
+{% endblock %}
 
 {% block pagestyle %}
   <style>
