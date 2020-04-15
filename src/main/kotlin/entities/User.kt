@@ -11,8 +11,9 @@ interface User : BaseUser<User> {
 
     companion object : OzoneEntity.Of<User>()
 
-    fun isAdmin(): Boolean {
-        return email in listOf("adam.miedema@gmail.com", "ashokgelal@gmail.com")
+    fun isAdmin(emails: List<String>): Boolean {
+
+       return email in emails
     }
 }
 
