@@ -21,8 +21,8 @@ Here are the pre-requisites for your deployment server.
 
 </div>
 
-You can use a tool like [Cleaver](https://getcleaver.com) to quickly provision a server and create a new site
-with SSL certificates ready to go.
+You can use a tool like [Cleaver](https://cleaver.cloud) to quickly provision a server, create a new site
+with SSL certificates ready to go, and deploy an Alpas app. 
 
 <a name="first-run"></a>
 ### [Preparing the server - First Run](#first-run)
